@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ANALYTICS-START -->
+<!-- Common Analytics Snippets -->
+<script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR-GA-ID');
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR-PIXEL-ID');
+    fbq('track', 'PageView');
+</script> 
+<!-- ANALYTICS-END -->
+    <style>
+        .product-card {
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .emoji {
+            font-size: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🍽️ Food Shop</a>
+            <div class="d-flex">
+                <a href="cart.html" class="btn btn-outline-light">
+                    🛒 Cart <span id="cart-count" class="badge bg-danger">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <div class="card-body text-center">
+                        <a href="pizza.html" class="text-decoration-none text-dark">
+                            <div class="emoji mb-3">🍕</div>
+                            <h5 class="card-title">Pizza</h5>
+                            <p class="card-text">Delicious Italian pizza with fresh ingredients</p>
+                            <p class="card-text"><strong>$12.99</strong></p>
+                        </a>
+                        <button class="btn btn-primary" onclick="addToCart('Pizza', 12.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <div class="card-body text-center">
+                        <a href="burger.html" class="text-decoration-none text-dark">
+                            <div class="emoji mb-3">🍔</div>
+                            <h5 class="card-title">Burger</h5>
+                            <p class="card-text">Juicy beef burger with special sauce</p>
+                            <p class="card-text"><strong>$8.99</strong></p>
+                        </a>
+                        <button class="btn btn-primary" onclick="addToCart('Burger', 8.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <div class="card-body text-center">
+                        <a href="ramen.html" class="text-decoration-none text-dark">
+                            <div class="emoji mb-3">🍜</div>
+                            <h5 class="card-title">Ramen</h5>
+                            <p class="card-text">Authentic Japanese ramen with rich broth</p>
+                            <p class="card-text"><strong>$14.99</strong></p>
+                        </a>
+                        <button class="btn btn-primary" onclick="addToCart('Ramen', 14.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <div class="card-body text-center">
+                        <a href="sushi.html" class="text-decoration-none text-dark">
+                            <div class="emoji mb-3">🍣</div>
+                            <h5 class="card-title">Sushi</h5>
+                            <p class="card-text">Fresh salmon and tuna sushi rolls</p>
+                            <p class="card-text"><strong>$16.99</strong></p>
+                        </a>
+                        <button class="btn btn-primary" onclick="addToCart('Sushi', 16.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        // Initialize cart count
+        updateCartCount();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

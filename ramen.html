@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen - Food Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .emoji {
+            font-size: 8rem;
+        }
+    </style>
+<!-- ANALYTICS-START -->
+<!-- Common Analytics Snippets -->
+<script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR-GA-ID');
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR-PIXEL-ID');
+    fbq('track', 'PageView');
+</script> 
+<!-- ANALYTICS-END -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🍽️ Food Shop</a>
+            <div class="d-flex">
+                <a href="cart.html" class="btn btn-outline-light">
+                    🛒 Cart <span id="cart-count" class="badge bg-danger">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <div class="emoji mb-4">🍜</div>
+            </div>
+            <div class="col-md-6">
+                <h1>Ramen</h1>
+                <p class="lead">Authentic Japanese ramen with rich broth</p>
+                <p class="h3 mb-4">$14.99</p>
+                <button class="btn btn-primary btn-lg" onclick="addToCart('Ramen', 14.99)">Add to Cart</button>
+                <hr class="my-4">
+                <h5>Description</h5>
+                <p>Traditional Japanese ramen featuring our house-made tonkotsu broth, perfectly cooked noodles, and topped with chashu pork, soft-boiled egg, green onions, and nori.</p>
+                <a href="index.html" class="btn btn-outline-secondary">← Back to Shop</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        // Initialize cart count
+        updateCartCount();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
